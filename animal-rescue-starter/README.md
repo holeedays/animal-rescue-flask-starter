@@ -138,7 +138,7 @@ In a few sentences, trace a visit to `/dogs`: which route runs, which model
 function is called, which table is queried, and how the rows become HTML?
 
 <p>
-The index route runs first (e.g. "/" route on the server). When you click on either **Available dogs** or **Meet our dogs** in the index page, you get redirected to the "/dogs" route. 
+The index route runs first (e.g. "/" route on the server). When you click on either <b>Available dogs</b> or <b>Meet our dogs</b> in the index page, you get redirected to the "/dogs" route. 
 </p>
 <p>
 Here, the views calls the models module's get_dogs() method, which queries the database for the dogs table returns all dog rows. The rows are represented as an item in the array. The rows themselves are arrays <i>(which has <b>id, name, age, breed, description</b> in that order).</i>
