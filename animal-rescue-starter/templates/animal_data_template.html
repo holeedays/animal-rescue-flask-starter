@@ -1,0 +1,41 @@
+<!-- 
+	This is the animal card data, I just made it as a repeatable template since the format is exactly
+	the same for both cats and dogs (to be used with include) 
+-->
+
+<!-- can create a for loop with explicit index iteration in jinja like this -->
+{% for i in range(data | length) %} 
+    <div class="animal-card">
+    <!-- denotes the index/order of this result in the list  -->
+    <span class="animal-card__index">{{ i }}</span>
+    <!-- the actual data about the animal -->
+    <div class="animal-card__descriptor">
+			<strong>NAME</strong> 
+			<span>{{ data[i][1] }}</span>
+    </div>
+    <div class="animal-card__descriptor">
+			<strong>AGE</strong> 
+			<span>{{ data[i][2] }}</span>
+    </div>
+    <div class="animal-card__descriptor">
+			<strong>BREED</strong> 
+			<span>{{ data[i][3] }}</span>
+    </div>
+    <div class="animal-card__descriptor">
+			<strong>DESCRIPTION</strong> 
+			<!-- 
+				since description's DEFAULT value is "", we can just inject a custom string for descriptions with 
+				nothing in it  
+			-->
+			{% if data[i][4] == "" %}
+				<!-- 
+					also add a custom variable "animal", I can modify this using a with statement depending which
+					animal I want to set this to
+				 -->
+				<span>There is currently no description for this {{ animal }}. Tune back later!</span>
+			{% else %}
+				<span>{{ data[i][4] }}</span>
+			{% endif %}
+    </div>
+    </div>
+{% endfor %}
