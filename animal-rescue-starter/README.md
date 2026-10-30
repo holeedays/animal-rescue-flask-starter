@@ -137,6 +137,16 @@ You do not need to copy the page structure or build new routes.
 In a few sentences, trace a visit to `/dogs`: which route runs, which model
 function is called, which table is queried, and how the rows become HTML?
 
+<p>
+The index route runs first (e.g. "/" route on the server). When you click on either **Available dogs** or **Meet our dogs** in the index page, you get redirected to the "/dogs" route. 
+</p>
+<p>
+Here, the views calls the models module's get_dogs() method, which queries the database for the dogs table returns all dog rows. The rows are represented as an item in the array. The rows themselves are arrays <i>(which has <b>id, name, age, breed, description</b> in that order).</i>
+</p>
+<p>
+The array object is serialized <i>(as a variable called <b>data</b>)</i> when rendering this particular url route. In the html, the array object is looped through using flask's templating functions and the data of each dog is converted to an table-like HTML element <i>(I used divs with nested strong and span tags)</i> with all of its data.
+</p>
+
 References:
 - Flask templates: https://flask.palletsprojects.com/en/stable/templating/
 - Python sqlite3: https://docs.python.org/3/library/sqlite3.html
